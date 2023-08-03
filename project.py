@@ -19,8 +19,10 @@ def introduction(user):
 
 def training():
     presidents = Presidents()
+    p = inflect.engine()
     for president in presidents.presidents:
-        print(f"{president['name']} was the {president['number']}th President.")
+        number = president["number"]
+        print(f"{president['name']} was the {p.ordinal(number)} President.")
         go = input("Press Enter to get to the next president! ")
         print()
         if go == " " or go != "":
