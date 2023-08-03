@@ -2,6 +2,8 @@ import csv
 from president_set import Presidents
 from user import User
 import inflect
+
+
 def main():
     us = get_user_name()
     introduction(us)
