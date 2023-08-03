@@ -9,11 +9,22 @@ def main():
     #match_trainings_set()
 
 
+'''
+The user name is needet to store their score in a csv file, so the user can
+see their improvements over time.  
 
-def get_user_name():
+:input type str:
+'''
+def get_user_name() -> str:
     user = input("Tell me your Username: ").strip()
     us = User(user)
     return us
+'''
+This is probably subject to revision, later in developement. For now it is just
+a information on what this is all about. 
+
+:input str:
+'''
 
 def introduction(us):
     print("MemRaise")
@@ -23,7 +34,12 @@ def introduction(us):
     mode = input("Please choose a mode: train or match: ")
     choose_mode(mode, us)
     
+'''
+This is the training mode, for now the function is very simple. But I am thinking on a better implementation,
+that is more fun to do. I don't want it to be boring.
 
+:input empty str:
+'''
 def training():
     presidents = Presidents()
     p = inflect.engine()
@@ -36,7 +52,14 @@ def training():
             continue
         
    
-        
+'''
+This is the match mode, it will ask the user for each president according to their 
+ordinal number. If the user succeeds, the score will increase by  one. If the user looses, 
+it is the end of the game. 
+The current score will be stored into the user class and then saved to a csv file.
+  
+:input str:
+'''      
 def match_trainings_set(us):
     presidents = Presidents()
     current_pres = presidents.create_match_set()
@@ -58,7 +81,12 @@ def match_trainings_set(us):
     us.score = score
     us.save_score()
     print(f"You knew {us.score} {p.plural('President', score)}, keep up with the training :)")
-    
+
+
+'''
+This is at the moment just to switch between the modes. It will eventually get more items to choose from.
+
+'''  
 def choose_mode(mode, us):
     match mode:
         case "train":
@@ -70,7 +98,7 @@ def choose_mode(mode, us):
                 print()
             match_trainings_set(us)
         case _:
-            print("Invalid Mode: Please type train or match")      
+            print("Invalid Mode: Please type train or match")     
             
 
 

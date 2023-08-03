@@ -18,5 +18,5 @@ class User:
         dt = date.today()
         with open("score.csv", "a") as file:
             writer = csv.DictWriter(file, fieldnames=["date","name", "score"])
-            #writer.writeheader()
+            #writer.writeheader()  # Remove the '#' to write the fieldnames on top of a new csv file! After the csv is created, put the # in again.
             writer.writerow({"date": dt, "name": self.name, "score": self.score})
