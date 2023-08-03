@@ -31,10 +31,6 @@ Once you have installed and launched MemRaise, you can start training your memor
 
 To enter the training mode, simply type in "train" when you can choose the mode and press the Enter key. MemRaise will display the name of each president one by one, allowing you to familiarize yourself with their order and names.
 
-## Contributing
-
-Contributions to MemRaise are welcome! If you have any ideas, bug reports, or feature requests, please open an issue on the GitHub repository. We appreciate your feedback and contributions to make MemRaise even better.
-
 
 ## License
 
