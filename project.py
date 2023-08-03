@@ -1,20 +1,27 @@
 import csv
 from president_set import Presidents
+from user import User
 import inflect
 def main():
-    training()
+    us = get_user_name()
+    introduction(us)
+    #training()
     #match_trainings_set()
 
 
 
 def get_user_name():
-    return input("Tell me your Username: ")
+    user = input("Tell me your Username: ").strip()
+    us = User(user)
+    return us
 
-def introduction(user):
+def introduction(us):
     print("MemRaise")
-    print(f"Hello {user} I am Memi and I will help you to improve your Memory")
+    print(f"Hello {us.name} I am Memi and I will help you to improve your Memory")
     print("What is this all about? With my help, you will gradually improve your memorie skills.")
     print("This version has only one trainig set. All presidents of the united states of america.")
+    mode = input("Please choose a mode: train or match: ")
+    choose_mode(mode, us)
     
 
 def training():
@@ -30,7 +37,7 @@ def training():
         
    
         
-def match_trainings_set():
+def match_trainings_set(us):
     presidents = Presidents()
     current_pres = presidents.create_match_set()
     score = 0
@@ -41,16 +48,29 @@ def match_trainings_set():
             name = input(f"Who is the {current_pres_num}th President? ")
             correct_name = current_pres.get(current_pres_num)
             if name == correct_name:
-                score += 1
+                score = score +1
                 print("Correct")
                 continue
             else:
                 print(f"Your answer was incorrect, the {current_pres_num}th President was {correct_name}! Better luck next time :) ")
                 break
         break
-    print(f"You knew {score} {p.plural('President', score)}, keep up with the training :)")
+    us.score = score
+    us.save_score()
+    print(f"You knew {us.score} {p.plural('President', score)}, keep up with the training :)")
     
-            
+def choose_mode(mode, us):
+    match mode:
+        case "train":
+            for _ in range(3):
+                print()
+            training()
+        case "match":
+            for _ in range(3):
+                print()
+            match_trainings_set(us)
+        case _:
+            print("Invalid Mode: Please type train or match")      
             
 
 
