@@ -5,10 +5,7 @@ import inflect
 
 
 def main():
-    us = get_user_name()
-    introduction(us)
-    #training()
-    #match_trainings_set()
+    run()
 
 
 '''
@@ -33,9 +30,14 @@ def introduction(us):
     print(f"Hello {us.name} I am Memi and I will help you to improve your Memory")
     print("What is this all about? With my help, you will gradually improve your memorie skills.")
     print("This version has only one trainig set. All presidents of the united states of america.")
-    mode = input("Please choose a mode: train, match, major or tipps: ")
-    choose_mode(mode, us)
-    
+    while True:
+        mode = input("Please choose a mode: train, match, major or tipps: ")
+        if mode == 'train' or mode == 'match' or mode == 'major' or mode == 'tipps':
+            choose_mode(mode, us)
+            break
+        else:
+            print('Please type in on of these answers: train, match, major or tipps!')
+            continue
 '''
 This is the training mode, for now the function is very simple. But I am thinking on a better implementation,
 that is more fun to do. I don't want it to be boring.
@@ -119,6 +121,18 @@ def choose_mode(mode, us):
             print("Invalid Mode: Please type train or match")     
             
 
-
+def run():
+    
+    us = get_user_name()
+    while True:
+        introduction(us)
+        ans = input('Do you want another choice or quit?: y for yes q for quit ')
+        if ans == 'q':
+            break
+        elif ans == 'y':
+            continue
+        
+    
+    
 if __name__ == "__main__":
     main()
