@@ -42,9 +42,12 @@ class Major:
             
          
 
+def main():
+    m = Major()   
+    m.create_major_system()
+    print(m.number)
+    m.train_numbers()
 
-m = Major()   
-m.create_major_system()
-print(m.number)
-m.train_numbers()    
+if __name__ == "__main__":
+    main()
 

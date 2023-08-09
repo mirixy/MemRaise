@@ -1,6 +1,6 @@
-import csv
 from president_set import Presidents
 from user import User
+from train_major import Major
 import inflect
 
 
@@ -33,7 +33,7 @@ def introduction(us):
     print(f"Hello {us.name} I am Memi and I will help you to improve your Memory")
     print("What is this all about? With my help, you will gradually improve your memorie skills.")
     print("This version has only one trainig set. All presidents of the united states of america.")
-    mode = input("Please choose a mode: train or match: ")
+    mode = input("Please choose a mode: train, match, major or tipps: ")
     choose_mode(mode, us)
     
 '''
@@ -85,6 +85,17 @@ def match_trainings_set(us):
     print(f"You knew {us.score} {p.plural('President', score)}, keep up with the training :)")
 
 
+def train_major():
+    mj = Major()
+    mj.create_major_system()
+    mj.train_numbers()
+
+
+
+def tipps():
+    mj = Major()
+    mj.create_major_system()
+    print(*mj.number.items())
 '''
 This is at the moment just to switch between the modes. It will eventually get more items to choose from.
 
@@ -99,6 +110,11 @@ def choose_mode(mode, us):
             for _ in range(3):
                 print()
             match_trainings_set(us)
+        case "major":
+            train_major()
+        case "tipps":
+            tipps()
+            
         case _:
             print("Invalid Mode: Please type train or match")     
             
